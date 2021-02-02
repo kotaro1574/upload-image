@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UploadImageController;
+use App\Http\Controllers\ImageListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/form', [UploadImageController::class, "show"])->name("upload_form");
+Route::post('/upload', [UploadImageController::class, "upload"])->name("upload_image");
+Route::get('/list', [ImageListController::class, "show"])->name("image_list");
